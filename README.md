@@ -34,6 +34,7 @@ To use this plugin, make sure your project meets the following minimum SDK requi
 | iOS                  | ✅ Supported    | Requires iOS **12.0** or **Newer**       |
 | Web                  | ⏳ Soon         | Will be supported soon.                  |
 
+
 ## 🚀 Features
 
 - **Prevent Screenshots and Screen Recording**
@@ -328,6 +329,17 @@ If you encounter any issues, please ensure:
 - Your certificate files are included in the project’s asset bundle and referenced correctly
   in `pubspec.yaml`.
 
+## ℹ️ Dependencies
+
+This plugin relies on several other plugins to provide robust security features:
+
+- **[freeRASP](https://pub.dev/packages/freerasp)**: Used for runtime application self-protection (RASP) and integrity checks.
+
+These dependencies are necessary to ensure the plugin provides optimal security functionality.
+
+## ⚠️ Important Note on Log Warnings
+
+You may encounter certain warnings in the logs when using this plugin, especially those related to the underlying dependencies. These warnings are not errors and do not impact the functionality or security of your application. We are actively working on minimizing these messages, and future updates to the plugin will aim to address them.
 
 ## 🚀 Contributing
 
