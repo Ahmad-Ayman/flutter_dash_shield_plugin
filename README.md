@@ -150,3 +150,64 @@ final securityConfig = SecurityConfig(
 - **specificActions**: Map of individual actions for each check, allowing for tailored responses to different security concerns.
 
 > **Tip**: Setting custom actions allows you to implement different responses, like logging or alerting, based on the type of integrity check that fails.
+
+
+### 4. **Print Removal and Replacing**
+
+Dash Shield includes a print management tool to help you clean up or control debugging logs in your project. This feature allows you to remove all `print` statements from your code or wrap them with `kDebugMode`, making it easy to manage debug output in production builds.
+
+To access the print management tool, run the following command:
+
+```bash
+dart run dash_shield:main
+```
+You’ll see a command-line menu with the following options:
+
+- **Remove All Prints**: Select this option to search through your Dart files and automatically remove all `print` statements. This ensures that no debug logs are left in your code, streamlining production builds and reducing unnecessary log output.
+
+- **Wrap All Prints with kDebugMode**: Choose this option to wrap each `print` statement with `kDebugMode`, making them visible only in debug mode. This is a quick way to retain useful debug information without exposing it in production.
+
+> **Note**: Using these options helps ensure that sensitive or unnecessary logs are managed efficiently in production-ready code.
+
+
+## API Reference
+
+### Methods
+
+#### `preventScreenshotsGlobally()`
+Prevents screenshots and screen recordings globally across the app.
+
+#### `preventScreenshotsAndRecording()`
+Prevents screenshots and screen recordings for specific screens.
+
+#### `applySSLPinning(List<String> certificatePaths, dynamic client)`
+Attaches SSL certificates for secure network communication with the Dio client.
+
+#### `initSecurity({required SecurityConfig config})`
+Starts app integrity checks with specified configurations for a secure app environment.
+
+### `SecurityConfig`
+
+The `SecurityConfig` class allows you to configure parameters for different integrity checks, SSL certificates, and app security options.
+
+- **Properties**:
+  - `androidSigningCertHashes`: List of SHA256 hashes for Android app signing.
+  - `androidPackageName`: Package name for the Android app.
+  - `iosBundleIds`: List of iOS bundle IDs.
+  - `iosTeamId`: Team ID for iOS app signing.
+  - `watcherEmail`: Email for receiving alerts when integrity issues are detected.
+  - `enableOnAndroid` and `enableOniOS`: Toggles to enable or disable checks for each platform.
+
+## Troubleshooting
+
+If you encounter any issues, please ensure:
+- The `Dio` client is correctly configured for SSL pinning.
+- Your certificate files are included in the project’s asset bundle and referenced correctly in `pubspec.yaml`.
+
+## Contributing
+
+Contributions are welcome! If you have suggestions, feel free to open an issue or submit a pull request. This is the first version of Dash Shield, and enhancements, as well as new security features, will be added soon to improve its functionality.
+
+## License
+
+Dash Shield is released under the MIT License.
