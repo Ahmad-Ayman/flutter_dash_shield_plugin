@@ -209,9 +209,12 @@ If you encounter any issues, please ensure:
 - The `Dio` client is correctly configured for SSL pinning.
 - Your certificate files are included in the project’s asset bundle and referenced correctly in `pubspec.yaml`.
 
+
 ## Contributing
 
 Contributions are welcome! If you have suggestions, feel free to open an issue or submit a pull request. This is the first version of Dash Shield, and enhancements, as well as new security features, will be added soon to improve its functionality.
+
+Special thanks to **[@Habebaya](https://github.com/Habebaya)** for her valuable contributions to the package!
 
 ## License
 
