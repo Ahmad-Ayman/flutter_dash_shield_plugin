@@ -77,3 +77,19 @@ In this example, calling DashShield.preventScreenshotsAndRecording() inside the 
 
 > **Tip**: Place the `preventScreenshotsAndRecording()` call at the top of the `build` method for clarity, ensuring it activates as soon as the screen is rendered.
 
+### 2. **Apply SSL Pinning**
+
+Dash Shield allows you to secure network connections by enforcing SSL pinning with custom certificates, preventing man-in-the-middle (MITM) attacks. This functionality is compatible with the `Dio` client for now, other clients will be supported soon.
+
+To apply SSL pinning:
+
+```dart
+import 'package:dash_shield/dash_shield.dart';
+
+List<String> certificatePaths = ['assets/certificates/my_cert.pem','assets/certificates/my_cert_2.crt'];
+await DashShield.applySSLPinning(certificatePaths, dioClient);
+```
+- **certificatePaths**: A list of paths to `.pem` or `.crt` certificate files located in your assets.
+- **client**: The HTTP client (such as `Dio`) used for network requests.
+
+> **Tip**: Make sure to include your certificate files in the project’s assets and reference them in `pubspec.yaml` to ensure they load correctly.
