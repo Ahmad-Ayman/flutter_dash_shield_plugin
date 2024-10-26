@@ -167,7 +167,7 @@ You’ll see a command-line menu with the following options:
 
 - **Wrap All Prints with kDebugMode**: Choose this option to wrap each `print` statement with `kDebugMode`, making them visible only in debug mode. This is a quick way to retain useful debug information without exposing it in production.
 
-![example](dash_plugin_prints.gif)
+![example](media/dash_plugin_prints.gif)
 
 > **Note**: Using these options helps ensure that sensitive or unnecessary logs are managed efficiently in production-ready code.
 
