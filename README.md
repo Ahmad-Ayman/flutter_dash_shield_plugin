@@ -216,28 +216,14 @@ Contributions are welcome! If you have suggestions, feel free to open an issue o
 
 Special thanks to the current contributors:
 
-<p align="center" style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-  <a href="https://github.com/Habebaya" style="text-align: center; margin: 5px;">
-    <img src="https://github.com/Habebaya.png" alt="Habeba's GitHub avatar" width="30" height="30"><br>
-    <sub><b>@Habebaya</b></sub>
-  </a>
-  <a href="https://github.com/ADesoky" style="text-align: center; margin: 5px;">
-    <img src="https://github.com/ADesoky.png" alt="ADesoky's GitHub avatar" width="30" height="30"><br>
-    <sub><b>@ADesoky</b></sub>
-  </a>
-  <a href="https://github.com/AnotherUser" style="text-align: center; margin: 5px;">
-    <img src="https://github.com/AnotherUser.png" alt="Another User's GitHub avatar" width="30" height="30"><br>
-    <sub><b>@AnotherUser</b></sub>
-  </a>
-  <a href="https://github.com/MoreUsers" style="text-align: center; margin: 5px;">
-    <img src="https://github.com/MoreUsers.png" alt="More User's GitHub avatar" width="30" height="30"><br>
-    <sub><b>@MoreUsers</b></sub>
-  </a>
-  <a href="https://github.com/LastUser" style="text-align: center; margin: 5px;">
-    <img src="https://github.com/LastUser.png" alt="Last User's GitHub avatar" width="30" height="30"><br>
-    <sub><b>@LastUser</b></sub>
-  </a>
-</p>
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Habebaya"><img src="https://github.com/Habebaya.png" width="100px;" alt="Habeba Yasser"/><br /><sub><b>Habeba Yasser</b></sub></a><br /><a href="https://www.linkedin.com/in/habeba-yasser-3994a41b1/" title="Connection">💬</a> </td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ADesoky"><img src="https://github.com/ADesoky.png" width="100px;" alt="Ahmed Desoky"/><br /><sub><b>Ahmed Desoky</b></sub></a><br /><a href="https://www.linkedin.com/in/ahmed-m-desoky/" title="Connection">💬</a></td>
+    </tr>
+  </tbody>
+</table>
 
 ## License
 
