@@ -17,11 +17,11 @@ safeguarding your app and optimizing your development workflow is simple and eff
 # 📌 Platform Support
 - This Flutter package supports the following platforms:
 
-| Platform             | Support Status  | Notes                                    |
-|:---------------------|:----------------|:-----------------------------------------|
-| Android              | ✅ Supported     | Requires Android Sdk **23** or **Newer** |
-| iOS                  | ✅ Supported     | Requires iOS **12.0** or **Newer**       |
-| Web                  | ❌ Unsupported   | ---                                      |
+| Platform             | Support Status | Notes                                    |
+|:---------------------|:---------------|:-----------------------------------------|
+| Android              | ✅ Supported    | Requires Android Sdk **23** or **Newer** |
+| iOS                  | ✅ Supported    | Requires iOS **12.0** or **Newer**       |
+| Web                  | ⏳ Soon         | Will be supported soon.                  |
 
 ## 🚀 Features
 
