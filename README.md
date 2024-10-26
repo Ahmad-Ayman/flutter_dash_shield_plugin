@@ -265,6 +265,22 @@ certificates, and app security options.
     - `watcherEmail`: Email for receiving alerts when integrity issues are detected.
     - `enableOnAndroid` and `enableOniOS`: Toggles to enable or disable checks for each platform.
 
+
+
+
+|          Datatype          |        Parameter         | Required On Android | Required On IOS | Default Value | Description                                                                                    |
+|:--------------------------:|:------------------------:|:-------------------:|:---------------:|:-------------:|:-----------------------------------------------------------------------------------------------|
+|        List<String>        | androidSigningCertHashes |          ✅          |        ❌        |      --       | List of SHA256 hashes for Android app signing.                                                 |
+|           String           |    androidPackageName    |          ✅          |        ❌        |      --       | Package name for the Android app.                                                              |
+|        List<String>        |       iosBundleIds       |          ❌          |        ✅        |      --       | List of iOS bundle IDs.                                                                        |
+|           String           |        iosTeamId         |          ❌          |        ✅        |      --       | Team ID for iOS app signing.                                                                   |
+|           String           |       watcherEmail       |          ✅          |        ✅        |      --       | Email for receiving alerts when integrity issues are detected.                                 |
+|            bool            |     enableOnAndroid      |          ✅          |        ❌        |      --       | Indicates if security checks should be enabled on Android.                                     |
+|            bool            |       enableOniOS        |          ❌          |        ✅        |      --       | Indicates if security checks should be enabled on IOS.                                         |
+|        List<String>        |     supportedStores      |    **Optional**     |  **Optional**   |      --       | Supported app stores.                                                                          |
+|            bool            |       isProduction       |    **Optional**     |  **Optional**   |     true      | Indicates if the app is in production mode.                                                    |
+| List<SecOnControlsToApply> |      checksToEnable      |    **Optional**     |  **Optional**   |      --       | List of security checks to enable . If `null`, all security checks will be enabled by default. |
+
 ## Troubleshooting
 
 If you encounter any issues, please ensure:
