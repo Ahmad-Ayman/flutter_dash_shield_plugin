@@ -219,8 +219,8 @@ Special thanks to the current contributors:
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Habebaya"><img src="https://github.com/Habebaya.png" width="100px;" alt="Habeba Yasser"/><br /><sub><b>Habeba Yasser</b></sub></a><br /><a href="https://www.linkedin.com/in/habeba-yasser-3994a41b1/" title="LinkedIn">🔗</a> </td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ADesoky"><img src="https://github.com/ADesoky.png" width="100px;" alt="Ahmed Desoky"/><br /><sub><b>Ahmed Desoky</b></sub></a><br /><a href="https://www.linkedin.com/in/ahmed-m-desoky/" title="LinkedIn">🔗</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Habebaya"><img src="https://github.com/Habebaya.png" width="100px;" alt="Habeba Yasser"/><br /><sup><b>Habeba Yasser</b></sup></a><br /><a href="https://www.linkedin.com/in/habeba-yasser-3994a41b1/" title="LinkedIn">🔗</a> </td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ADesoky"><img src="https://github.com/ADesoky.png" width="100px;" alt="Ahmed Desoky"/><br /><sup><b>Ahmed Desoky</b></sup></a><br /><a href="https://www.linkedin.com/in/ahmed-m-desoky/" title="LinkedIn">🔗</a></td>
     </tr>
   </tbody>
 </table>
