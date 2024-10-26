@@ -258,15 +258,6 @@ The `SecurityConfig` class allows you to configure parameters for different inte
 certificates, and app security options.
 
 - **Properties**:
-    - `androidSigningCertHashes`: List of SHA256 hashes for Android app signing.
-    - `androidPackageName`: Package name for the Android app.
-    - `iosBundleIds`: List of iOS bundle IDs.
-    - `iosTeamId`: Team ID for iOS app signing.
-    - `watcherEmail`: Email for receiving alerts when integrity issues are detected.
-    - `enableOnAndroid` and `enableOniOS`: Toggles to enable or disable checks for each platform.
-
-
-
 
 |          Datatype          |        Parameter         | Required On Android | Required On IOS | Default Value | Description                                                                                    |
 |:--------------------------:|:------------------------:|:-------------------:|:---------------:|:-------------:|:-----------------------------------------------------------------------------------------------|
