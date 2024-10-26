@@ -21,6 +21,12 @@ To use this plugin, make sure your project meets the following minimum SDK requi
 - **Dart SDK**: `>=2.18.0 <4.0.0`
 - **Flutter SDK**: `>=3.3.0`
 
+| SDK     | Version            |
+|:--------|:-------------------|
+| Dart    | ✅ >=2.18.0 <4.0.0  | 
+| Flutter | ✅ >=3.3.0          |
+
+
 
 # 📌 Platform Support
 - This Flutter package supports the following platforms:
