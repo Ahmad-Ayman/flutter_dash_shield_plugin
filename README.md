@@ -2,8 +2,9 @@
 
 ![Dash Shield](https://img.shields.io/badge/security-robust-brightgreen.svg) ![Flutter](https://img.shields.io/badge/flutter-v3.24.3-blue.svg) ![Platform](https://img.shields.io/badge/platform-Android%20|%20IOS-green.svg)
 
-
-<img src="media/dash_shield.webp" alt="Dash Shield" width="400" height="300">
+<div style="text-align: center;">
+<img src="media/dash_shield.webp" alt="Dash Shield" width="400" height="400">
+</div>
 
 **Dash Shield** is a comprehensive Flutter plugin built to enhance app security and streamline development processes. It offers essential tools for protecting sensitive data, including screenshot and screen recording prevention, SSL pinning for secure network connections, and flexible app integrity checks. Additionally, Dash Shield provides utilities for managing `print` statements in code, allowing you to quickly remove or wrap debug logs within `kDebugMode`. With Dash Shield, safeguarding your app and optimizing your development workflow is simple and effective.
 
