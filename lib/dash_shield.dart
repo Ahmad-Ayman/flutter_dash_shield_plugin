@@ -1,6 +1,5 @@
 import 'package:dash_shield/src/features/integrity_checks/integrity_checks_service.dart';
 import 'package:dash_shield/src/features/integrity_checks/security_config.dart';
-import 'package:dio/dio.dart';
 
 import 'dash_shield_platform_interface.dart';
 import 'src/features/ssl_pinning/ssl_security_service.dart';
@@ -30,6 +29,14 @@ class DashShield {
     return DashShieldPlatform.instance.preventScreenshotsGlobally();
   }
 
+  /// Allows screenshots globally across the app.
+  ///
+  /// This method removes the screenshot prevention flag across all screens,
+  /// enabling screenshots and screen recording throughout the app.
+  static Future<void> allowScreenshotsGlobally() {
+    return DashShieldPlatform.instance.allowScreenshotsGlobally();
+  }
+
   /// Prevents both screenshots and screen recording across the app.
   ///
   /// This method uses platform-specific implementations to block both
@@ -37,6 +44,14 @@ class DashShield {
   /// be captured.
   static Future<void> preventScreenshotsAndRecording() {
     return DashShieldPlatform.instance.preventScreenshotsAndRecording();
+  }
+
+  /// Allows screenshots for the current screen only.
+  ///
+  /// This method removes the screenshot prevention flag for the current screen,
+  /// enabling screenshots and screen recording for this screen.
+  static Future<void> allowScreenshots() {
+    return DashShieldPlatform.instance.allowScreenshots();
   }
 
   /// Applies SSL pinning using the provided [certificateAssetPath] for secure
@@ -50,13 +65,7 @@ class DashShield {
   /// Currently, only the Dio client is fully supported.
   static Future<dynamic> applySSLPinning(
       List<String> certificateAssetPath, dynamic client) async {
-    if (client is Dio) {
-      await SSLSecurityService.attachSSLCertificate(
-          certificateAssetPath, client);
-    } else {
-      return await SSLSecurityService.attachSSLCertificate(
-          certificateAssetPath, client);
-    }
+    await SSLSecurityService.attachSSLCertificate(certificateAssetPath, client);
   }
 
   /// Initializes app security checks with the given [config].

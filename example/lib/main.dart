@@ -1,4 +1,5 @@
 import 'package:dash_shield/dash_shield.dart';
+import 'package:dash_shield_example/step2.dart';
 import 'package:flutter/material.dart';
 
 import 'api_service.dart';
@@ -40,22 +41,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  sslPinningExample() async {
-    final respo = await ApiService.getInstance().get('https://www.example.com');
-    print('response: ${respo.data}');
-  }
-
-  preventScreenshotGloballyExample() async {
-    await DashShield.preventScreenshotsGlobally();
-  }
-
-  preventScreenshotForScreenExample() async {
-    await DashShield.preventScreenshotsAndRecording();
-  }
-
-  @override
-  void initState() {
-    super.initState();
+  getAllDio() async {
+    //https://cat-fact.herokuapp.com/facts
+    //https://fakestoreapi.com/products
+    final respo = await ApiService.getInstance()
+        .get('https://cat-fact.herokuapp.com/facts');
+    print(respo.data);
   }
 
   @override
@@ -63,20 +54,30 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('Dash Shield Demo'),
         ),
         body: Center(
           child: Column(
-            children: [
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
               ElevatedButton(
-                  onPressed: sslPinningExample,
-                  child: const Text('SSL Pinning')),
+                  onPressed: () {
+                    DashShield.allowScreenshotsGlobally();
+                  },
+                  child: const Text('Press to allow screenshot')),
               ElevatedButton(
-                  onPressed: preventScreenshotGloballyExample,
-                  child: const Text('Prevent Screen Globally')),
+                  onPressed: () {
+                    DashShield.preventScreenshotsGlobally();
+                  },
+                  child: const Text('Press to disable screenshot')),
               ElevatedButton(
-                  onPressed: preventScreenshotForScreenExample,
-                  child: const Text('Prevent Screen Specific')),
+                  onPressed: getAllDio, child: const Text('Test SSL Pinning')),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Step2()));
+                  },
+                  child: const Text('Test prevent screenshot for single page')),
             ],
           ),
         ),

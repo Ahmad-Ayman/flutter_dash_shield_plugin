@@ -43,6 +43,16 @@ abstract class DashShieldPlatform extends PlatformInterface {
         'preventScreenshotsGlobally() has not been implemented.');
   }
 
+  /// Allows screenshots globally for the entire app.
+  ///
+  /// This method removes security flags across the app, enabling screenshots
+  /// and screen recording for all screens. Throws [UnimplementedError]
+  /// if not implemented on a platform.
+  Future<void> allowScreenshotsGlobally() {
+    throw UnimplementedError(
+        'allowScreenshotsGlobally() has not been implemented.');
+  }
+
   /// Prevents screenshots and screen recording for specific screens.
   ///
   /// This method restricts screenshots and recording for sensitive screens
@@ -51,5 +61,14 @@ abstract class DashShieldPlatform extends PlatformInterface {
   Future<void> preventScreenshotsAndRecording() {
     throw UnimplementedError(
         'preventScreenshotsAndRecording() has not been implemented.');
+  }
+
+  /// Allows screenshots for the current screen only.
+  ///
+  /// This method removes the security flag for the current screen, allowing
+  /// screenshots and screen recording for this screen. Throws [UnimplementedError]
+  /// if not implemented on a platform.
+  Future<void> allowScreenshots() {
+    throw UnimplementedError('allowScreenshots() has not been implemented.');
   }
 }

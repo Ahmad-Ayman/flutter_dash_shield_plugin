@@ -21,6 +21,18 @@ class MockDashShieldPlatform
     // TODO: implement preventScreenshotsGlobally
     throw UnimplementedError();
   }
+
+  @override
+  Future<void> allowScreenshots() {
+    // TODO: implement allowScreenshots
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> allowScreenshotsGlobally() {
+    // TODO: implement allowScreenshotsGlobally
+    throw UnimplementedError();
+  }
 }
 
 void main() {

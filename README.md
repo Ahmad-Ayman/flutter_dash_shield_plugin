@@ -1,6 +1,6 @@
 # 🔥 Dash Shield
 
-![Dash Shield](https://img.shields.io/badge/security-robust-brightgreen.svg) ![Flutter](https://img.shields.io/badge/flutter-v3.24.3-blue.svg) 
+![Dash Shield](https://img.shields.io/badge/security-robust-brightgreen.svg) ![Flutter](https://img.shields.io/badge/flutter-v3.24.3-blue.svg)
 
 ![Dash Shield Logo](media/dash_shield.png)
 
@@ -26,23 +26,23 @@ safeguarding your app and optimizing your development workflow is simple and eff
 ## 🚀 Features
 
 - **Prevent Screenshots and Screen Recording**
-    - Block screenshots and screen recording on specific screens or globally across the app.
-    - Ensures sensitive information is kept secure, even in visual form.
+  - Block screenshots and screen recording on specific screens or globally across the app.
+  - Ensures sensitive information is kept secure, even in visual form.
 
 - **SSL Pinning**
-    - Enforce SSL pinning with custom certificates to prevent man-in-the-middle (MITM) attacks.
-    - Compatible with `Dio` client for secure network communication.
+  - Enforce SSL pinning with custom certificates to prevent man-in-the-middle (MITM) attacks.
+  - Compatible with `Dio` client for secure network communication.
 
 - **Application Integrity Checks**
-    - Perform real-time checks to detect app integrity issues, such as debugging, device binding,
-      unauthorized hooks, and more.
-    - Configurable actions for each integrity check for granular control over responses.
+  - Perform real-time checks to detect app integrity issues, such as debugging, device binding,
+    unauthorized hooks, and more.
+  - Configurable actions for each integrity check for granular control over responses.
 
 - **Print Removal and Debug Management**
-    - Provides tools to remove all `print` statements or wrap them with `kDebugMode` for better
-      debug log control.
-    - Helps streamline production code by eliminating or isolating debugging logs in a simple,
-      automated way.
+  - Provides tools to remove all `print` statements or wrap them with `kDebugMode` for better
+    debug log control.
+  - Helps streamline production code by eliminating or isolating debugging logs in a simple,
+    automated way.
 
 ## 🚀 Installation
 
@@ -72,38 +72,67 @@ To prevent screenshots and recording across the entire app, use the following:
 ```dart
 import 'package:dash_shield/dash_shield.dart';
 
-await
-DashShield.preventScreenshotsGlobally();
+await DashShield.preventScreenshotsGlobally();
 ```
 
 This will apply a global security setting, ensuring no screen in the app can be captured or
-recorded.
+recorded, and for re-allowing this programmatically use the following :
+
+```dart
+import 'package:dash_shield/dash_shield.dart';
+
+await DashShield.allowScreenshotsGlobally();
+```
 
 #### b) For Specific Screens
 
 If you need to prevent screenshots and recording only on certain screens, Dash Shield provides a
 targeted approach to apply security only where it’s needed. This is useful for protecting sensitive
-screens while leaving others unaffected.
+screens while leaving others unaffected, and re-allowing it when leaving this screen.
 
 ```dart
-import 'package:dash_shield/dash_shield.dart';
+class Step2 extends StatefulWidget {
+  const Step2({super.key});
 
-class SensitiveScreen extends StatelessWidget {
+  @override
+  State<Step2> createState() => _Step2State();
+}
+
+class _Step2State extends State<Step2> {
+  @override
+  void initState() {
+    super.initState();
+    /// Prevent Screenshot for this screen.
+    DashShield.preventScreenshotsAndRecording();
+  }
+
+  @override
+  void dispose() {
+    /// Allow screenshots when leaving this screen
+    DashShield.allowScreenshots(); 
+    super.dispose();
+  }
+
+  @override
+  void deactivate() {
+    /// Allow screenshots when leaving this screen
+    DashShield.allowScreenshots(); 
+    super.deactivate();
+  }
+
   @override
   Widget build(BuildContext context) {
-    // Prevent screenshots and recording when this screen is displayed
-    DashShield.preventScreenshotsAndRecording();
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Sensitive Screen'),
       ),
       body: Center(
-        child: Text('Content on this screen is secure from screenshots and recording.'),
-      ),
+              child: Text(
+                      'Content on this screen is secure from screenshots and recording.')),
     );
   }
 }
+
 ```
 
 In this example, calling DashShield.preventScreenshotsAndRecording() inside the build method of a
@@ -129,9 +158,7 @@ List<String> certificatePaths = [
   'assets/certificates/my_cert.pem',
   'assets/certificates/my_cert_2.crt'
 ];
-await
-DashShield.applySSLPinning
-(certificatePaths, dioClient);
+await DashShield.applySSLPinning(certificatePaths, dioClient);
 ```
 
 - **certificatePaths**: A list of paths to `.pem` or `.crt` certificate files located in your
@@ -242,9 +269,17 @@ You’ll see a command-line menu with the following options:
 
 Prevents screenshots and screen recordings globally across the app.
 
+#### `allowScreenshotsGlobally()`
+
+Allow screenshots and screen recordings globally across the app.
+
 #### `preventScreenshotsAndRecording()`
 
 Prevents screenshots and screen recordings for specific screens.
+
+#### `allowScreenshots()`
+
+Allow screenshots and screen recordings for specific screens.
 
 #### `applySSLPinning(List<String> certificatePaths, dynamic client)`
 

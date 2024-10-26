@@ -21,7 +21,7 @@ dependencies:
   plugin_platform_interface: ^2.0.2
   dartdoc: ^8.1.0
   dio: ^5.7.0
-  freerasp: ^6.7.2
+  freerasp: 6.6.0
   fluttertoast: ^8.2.8
   dio_http_formatter: ^3.2.1
   interact: ^2.2.0
