@@ -14,6 +14,14 @@ integrity checks. Additionally, Dash Shield provides utilities for managing `pri
 code, allowing you to quickly remove or wrap debug logs within `kDebugMode`. With Dash Shield,
 safeguarding your app and optimizing your development workflow is simple and effective.
 
+# 📌 Requirements
+
+To use this plugin, make sure your project meets the following minimum SDK requirements:
+
+- **Dart SDK**: `>=2.18.0 <4.0.0`
+- **Flutter SDK**: `>=3.3.0`
+
+
 # 📌 Platform Support
 - This Flutter package supports the following platforms:
 
@@ -50,7 +58,7 @@ Add `dash_shield` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  dash_shield: ^1.0.0
+  dash_shield: ^0.0.1
 ```
 
 Then, run:
