@@ -2,9 +2,8 @@
 
 ![Dash Shield](https://img.shields.io/badge/security-robust-brightgreen.svg) ![Flutter](https://img.shields.io/badge/flutter-v3.24.3-blue.svg) ![Platform](https://img.shields.io/badge/platform-Android%20|%20IOS-green.svg)
 
-<p style="text-align: center;">
-<img src="media/dash_shield.webp" alt="Dash Shield" width="400" height="400" style="display: block; margin: 0 auto;">
-</p>
+![Dash Shield Logo](media/dash_shield.png)
+
 
 **Dash Shield** is a comprehensive Flutter plugin built to enhance app security and streamline
 development processes. It offers essential tools for protecting sensitive data, including screenshot
@@ -274,11 +273,23 @@ If you encounter any issues, please ensure:
 - Your certificate files are included in the project’s asset bundle and referenced correctly
   in `pubspec.yaml`.
 
+
 ## Contributing
 
 Contributions are welcome! If you have suggestions, feel free to open an issue or submit a pull
 request. This is the first version of Dash Shield, and enhancements, as well as new security
 features, will be added soon to improve its functionality.
+
+Special thanks to the current contributors:
+
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="20%"><a href="https://github.com/Habebaya"><img src="https://github.com/Habebaya.png" width="100px;" alt="Habeba Yasser"/><br /><p><b>Habeba Yasser</b></p></a><br /><a href="https://www.linkedin.com/in/habeba-yasser-3994a41b1/" title="LinkedIn">🔗</a> </td>
+      <td align="center" valign="top" width="20%"><a href="https://github.com/ADesoky"><img src="https://github.com/ADesoky.png" width="100px;" alt="Ahmed Desoky"/><br /><p><b>Ahmed Desoky</b></p></a><br /><a href="https://www.linkedin.com/in/ahmed-m-desoky/" title="LinkedIn">🔗</a></td>
+    </tr>
+  </tbody>
+</table>
 
 ## License
 
