@@ -72,8 +72,7 @@ To prevent screenshots and recording across the entire app, use the following:
 ```dart
 import 'package:dash_shield/dash_shield.dart';
 
-await
-DashShield.preventScreenshotsGlobally();
+await DashShield.preventScreenshotsGlobally();
 ```
 
 This will apply a global security setting, ensuring no screen in the app can be captured or
@@ -129,9 +128,7 @@ List<String> certificatePaths = [
   'assets/certificates/my_cert.pem',
   'assets/certificates/my_cert_2.crt'
 ];
-await
-DashShield.applySSLPinning
-(certificatePaths, dioClient);
+await DashShield.applySSLPinning(certificatePaths, dioClient);
 ```
 
 - **certificatePaths**: A list of paths to `.pem` or `.crt` certificate files located in your
