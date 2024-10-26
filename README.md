@@ -214,7 +214,7 @@ If you encounter any issues, please ensure:
 
 Contributions are welcome! If you have suggestions, feel free to open an issue or submit a pull request. This is the first version of Dash Shield, and enhancements, as well as new security features, will be added soon to improve its functionality.
 
-Special thanks to **[@Habebaya](https://github.com/Habebaya)** for her valuable contributions to the package!
+Special thanks to [![habeba's GitHub avatar](https://github.com/Habebaya.png?size=40)](https://github.com/Habebaya) **[@Habebaya](https://github.com/Habebaya)** for her valuable contributions to the package!
 
 ## License
 
