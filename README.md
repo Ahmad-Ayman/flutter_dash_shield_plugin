@@ -216,13 +216,13 @@ Contributions are welcome! If you have suggestions, feel free to open an issue o
 
 Special thanks to the current contributors:
 
-<p align="center">
-  <a href="https://github.com/Habebaya" style="margin: 10px;">
-    <img src="https://github.com/Habebaya.png?size=50" alt="Habeba's GitHub avatar"><br>
+<p align="left">
+  <a href="https://github.com/Habebaya" style="margin: 5px;">
+    <img src="https://github.com/Habebaya.png" alt="Habeba's GitHub avatar" width="30" height="30"><br>
     <sub><b>@Habebaya</b></sub>
   </a>
-  <a href="https://github.com/ADesoky" style="margin: 10px;">
-    <img src="https://github.com/ADesoky.png?size=50" alt="ADesoky's GitHub avatar"><br>
+  <a href="https://github.com/ADesoky" style="margin: 5px;">
+    <img src="https://github.com/ADesoky.png" alt="ADesoky's GitHub avatar" width="30" height="30"><br>
     <sub><b>@ADesoky</b></sub>
   </a>
 </p>
