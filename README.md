@@ -214,8 +214,18 @@ If you encounter any issues, please ensure:
 
 Contributions are welcome! If you have suggestions, feel free to open an issue or submit a pull request. This is the first version of Dash Shield, and enhancements, as well as new security features, will be added soon to improve its functionality.
 
-Special thanks to [![habeba's GitHub avatar](https://github.com/Habebaya.png?size=40)](https://github.com/Habebaya) **[@Habebaya](https://github.com/Habebaya)** for her valuable contributions to the package!
+Special thanks to the current contributors:
 
+<p align="center">
+  <a href="https://github.com/Habebaya" style="margin: 10px;">
+    <img src="https://github.com/Habebaya.png?size=50" alt="Habeba's GitHub avatar"><br>
+    <sub><b>@Habebaya</b></sub>
+  </a>
+  <a href="https://github.com/ADesoky" style="margin: 10px;">
+    <img src="https://github.com/ADesoky.png?size=50" alt="ADesoky's GitHub avatar"><br>
+    <sub><b>@ADesoky</b></sub>
+  </a>
+</p>
 ## License
 
 Dash Shield is released under the MIT License.
