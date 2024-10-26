@@ -216,7 +216,7 @@ Contributions are welcome! If you have suggestions, feel free to open an issue o
 
 Special thanks to the current contributors:
 
-<p align="center" style="display: flex; justify-content: center; gap: 10px;">
+<p align="center" style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
   <a href="https://github.com/Habebaya" style="text-align: center; margin: 5px;">
     <img src="https://github.com/Habebaya.png" alt="Habeba's GitHub avatar" width="30" height="30"><br>
     <sub><b>@Habebaya</b></sub>
@@ -224,6 +224,18 @@ Special thanks to the current contributors:
   <a href="https://github.com/ADesoky" style="text-align: center; margin: 5px;">
     <img src="https://github.com/ADesoky.png" alt="ADesoky's GitHub avatar" width="30" height="30"><br>
     <sub><b>@ADesoky</b></sub>
+  </a>
+  <a href="https://github.com/AnotherUser" style="text-align: center; margin: 5px;">
+    <img src="https://github.com/AnotherUser.png" alt="Another User's GitHub avatar" width="30" height="30"><br>
+    <sub><b>@AnotherUser</b></sub>
+  </a>
+  <a href="https://github.com/MoreUsers" style="text-align: center; margin: 5px;">
+    <img src="https://github.com/MoreUsers.png" alt="More User's GitHub avatar" width="30" height="30"><br>
+    <sub><b>@MoreUsers</b></sub>
+  </a>
+  <a href="https://github.com/LastUser" style="text-align: center; margin: 5px;">
+    <img src="https://github.com/LastUser.png" alt="Last User's GitHub avatar" width="30" height="30"><br>
+    <sub><b>@LastUser</b></sub>
   </a>
 </p>
 
