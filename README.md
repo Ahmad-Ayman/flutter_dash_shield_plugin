@@ -268,7 +268,7 @@ certificates, and app security options.
 |           String           |       watcherEmail       |          ✅          |        ✅        |      --       | Email for receiving alerts when integrity issues are detected.                                 |
 |            bool            |     enableOnAndroid      |          ✅          |        ❌        |      --       | Indicates if security checks should be enabled on Android.                                     |
 |            bool            |       enableOniOS        |          ❌          |        ✅        |      --       | Indicates if security checks should be enabled on IOS.                                         |
-|        List<String>        |     supportedStores      |    **Optional**     |  **Optional**   |      --       | Supported app stores.                                                                          |
+|      List'<'String'>'      |     supportedStores      |    **Optional**     |  **Optional**   |      --       | Supported app stores.                                                                          |
 |            bool            |       isProduction       |    **Optional**     |  **Optional**   |     true      | Indicates if the app is in production mode.                                                    |
 | List<SecOnControlsToApply> |      checksToEnable      |    **Optional**     |  **Optional**   |      --       | List of security checks to enable . If `null`, all security checks will be enabled by default. |
 
