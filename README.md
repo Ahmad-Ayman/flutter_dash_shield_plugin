@@ -93,3 +93,60 @@ await DashShield.applySSLPinning(certificatePaths, dioClient);
 - **client**: The HTTP client (such as `Dio`) used for network requests.
 
 > **Tip**: Make sure to include your certificate files in the project’s assets and reference them in `pubspec.yaml` to ensure they load correctly.
+
+### 3. **App Integrity Checks**
+
+Dash Shield offers configurable app integrity checks to detect security vulnerabilities such as debugging, developer mode, emulation, and more. You can tailor these checks to suit your app’s security needs.
+
+#### a) Define a Security Configuration
+
+To set up integrity checks, create a `SecurityConfig` instance with the necessary parameters:
+
+```dart
+import 'package:dash_shield/dash_shield.dart';
+
+final securityConfig = SecurityConfig(
+  androidSigningCertHashes: ['sha256hash1', 'sha256hash2'],
+  androidPackageName: 'com.example.app',
+  iosBundleIds: ['com.example.app.ios'],
+  iosTeamId: 'TEAMID',
+  watcherEmail: 'security@example.com',
+  enableOnAndroid: true,
+  enableOniOS: true,
+);
+```
+- **androidSigningCertHashes**: List of SHA256 hashes for Android app signing.
+- **androidPackageName**: Package name for the Android app.
+- **iosBundleIds**: List of iOS bundle IDs.
+- **iosTeamId**: Team ID for iOS app signing.
+- **watcherEmail**: Email for receiving alerts when integrity issues are detected.
+- **enableOnAndroid** and **enableOniOS**: Toggles to enable or disable checks for each platform.
+
+#### b) Initialize Security Checks
+After configuring, initialize the security checks with the following:
+
+```dart
+await DashShield.initSecurity(config: securityConfig);
+```
+This will activate the specified integrity checks to safeguard your app.
+
+### Custom Actions for Integrity Checks
+
+You can define custom actions to respond to specific integrity issues:
+
+```dart
+final securityConfig = SecurityConfig(
+  ...
+  checksToEnable: [SecOnControlsToApply.appIntegrity, SecOnControlsToApply.debug],
+  generalAction: (issue) => print('General Action Triggered: $issue'),
+  specificActions: {
+    SecOnControlsToApply.appIntegrity: (issue) => print('App integrity check failed: $issue'),
+  },
+);
+```
+
+- **checksToEnable**: List of specific checks to enable.
+- **generalAction**: Function to execute for any detected integrity issue if no specific action is set.
+- **specificActions**: Map of individual actions for each check, allowing for tailored responses to different security concerns.
+
+> **Tip**: Setting custom actions allows you to implement different responses, like logging or alerting, based on the type of integrity check that fails.
