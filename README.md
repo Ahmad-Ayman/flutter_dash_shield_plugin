@@ -18,13 +18,10 @@ safeguarding your app and optimizing your development workflow is simple and eff
 
 To use this plugin, make sure your project meets the following minimum SDK requirements:
 
-- **Dart SDK**: `>=2.18.0 <4.0.0`
-- **Flutter SDK**: `>=3.3.0`
-
-| SDK     | Version            |
-|:--------|:-------------------|
-| Dart    | ✅ >=2.18.0 <4.0.0  | 
-| Flutter | ✅ >=3.3.0          |
+| SDK     | Version          |
+|:--------|:-----------------|
+| Dart    | >=2.18.0 <4.0.0  | 
+| Flutter |  >=3.3.0         |
 
 
 
