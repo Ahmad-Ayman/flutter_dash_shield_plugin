@@ -11,7 +11,7 @@ import '../../core/utils/toaster_helper.dart';
 /// Example usage:
 /// ```dart
 /// SecurityConfig(
-///   androidSigningCertHashes: ['sha256hash1', 'sha256hash2'],
+///   androidSigningSHA256Hashes: ['sha256hash1', 'sha256hash2'],
 ///   androidPackageName: 'com.example.app',
 ///   iosBundleIds: ['com.example.app.ios'],
 ///   iosTeamId: 'TEAMID',
@@ -22,7 +22,7 @@ import '../../core/utils/toaster_helper.dart';
 /// ```
 class SecurityConfig {
   /// SHA256 hashes for Android app signing certificates (required for Android).
-  final List<String>? androidSigningCertHashes;
+  final List<String>? androidSigningSHA256Hashes;
 
   /// Package name for Android (required for Android).
   final String? androidPackageName;
@@ -68,13 +68,13 @@ class SecurityConfig {
   ///
   /// The constructor uses asserts to ensure platform-specific fields are provided
   /// based on the selected platforms. For Android, [androidPackageName] and
-  /// [androidSigningCertHashes] are required if [enableOnAndroid] is true. For
+  /// [androidSigningSHA256Hash] are required if [enableOnAndroid] is true. For
   /// iOS, [iosTeamId] and [iosBundleIds] are required if [enableOniOS] is true.
   ///
   /// Additionally, [watcherEmail] must not be empty, and at least one platform
   /// must be enabled.
   SecurityConfig({
-    this.androidSigningCertHashes,
+    this.androidSigningSHA256Hashes,
     this.androidPackageName,
     this.iosBundleIds,
     this.iosTeamId,
@@ -91,8 +91,8 @@ class SecurityConfig {
     assert(
       enableOnAndroid
           ? androidPackageName != null &&
-              androidSigningCertHashes != null &&
-              androidSigningCertHashes!.isNotEmpty
+              androidSigningSHA256Hashes != null &&
+              androidSigningSHA256Hashes!.isNotEmpty
           : true,
       'Android package name and signing certificate hashes are required when Android checks are enabled.',
     );

@@ -5,6 +5,9 @@ import 'package:dio/dio.dart';
 import 'dash_shield_platform_interface.dart';
 import 'src/features/ssl_pinning/ssl_security_service.dart';
 
+export 'src/core/utils/enums.dart';
+export 'src/features/integrity_checks/security_config.dart';
+
 /// The main entry point for Dash Shield security features, providing
 /// methods for screenshot prevention, screen recording prevention, SSL pinning,
 /// and app integrity checks.
@@ -66,7 +69,7 @@ class DashShield {
   /// ```dart
   /// DashShield.initSecurity(config: mySecurityConfig);
   /// ```
-  static void initSecurity({required SecurityConfig config}) async {
+  static Future<void> initSecurity({required SecurityConfig config}) async {
     await IntegrityChecksService.startIntegrityChecks(config: config);
   }
 }

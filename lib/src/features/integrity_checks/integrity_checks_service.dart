@@ -29,13 +29,19 @@ class IntegrityChecksService {
     try {
       // Retrieve the enabled security checks from the configuration
       final enabledChecks = config.getEnabledChecks();
-
+      List<String> base64Hashes = [];
+      if (config.androidSigningSHA256Hashes != null &&
+          config.androidSigningSHA256Hashes!.isNotEmpty) {
+        for (var hash in config.androidSigningSHA256Hashes!) {
+          base64Hashes.add(hashConverter.fromSha256toBase64(hash));
+        }
+      }
       // Configure Talsec based on platform and security requirements
       final talsecConfig = TalsecConfig(
         androidConfig: config.enableOnAndroid
             ? AndroidConfig(
                 packageName: config.androidPackageName!,
-                signingCertHashes: config.androidSigningCertHashes!,
+                signingCertHashes: base64Hashes,
                 supportedStores: config.supportedStores ?? [],
               )
             : null,
