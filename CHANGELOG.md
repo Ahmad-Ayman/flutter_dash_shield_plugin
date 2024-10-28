@@ -1,3 +1,10 @@
-## 0.0.1
+# Changelog
+All notable changes to this project will be documented in this file.
+## 0.0.1+1
+### Changes
+* Add Example.
+* Fix Image and GIF in Readme
 
-* TODO: Describe initial release.
+
+## 0.0.1
+Initial Release for Dash Shield Plugin
