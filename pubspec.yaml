@@ -4,7 +4,7 @@ description: >
   screenshots, enforcing SSL pinning, and performing app integrity checks. It also provides tools
   for managing `print` statements, helping streamline development workflows and protect sensitive
   data in production environments.
-version: 0.0.1
+version: 0.0.1+1
 homepage: https://ahmed-ayman.framer.ai/
 repository: https://github.com/Ahmad-Ayman/flutter_dash_shield_plugin
 
