@@ -18,21 +18,23 @@ safeguarding your app and optimizing your development workflow is simple and eff
 
 To use this plugin, make sure your project meets the following minimum SDK requirements:
 
-| SDK     | Version          |
-|:--------|:-----------------|
-| Dart    | >=2.18.0 <4.0.0  | 
-| Flutter |  >=3.3.0         |
+
+| SDK     | Version          | 
+|:--------|:-----------------| 
+| Dart    | >=2.18.0 <4.0.0  |  
+| Flutter |  >=3.3.0         | 
 
 
 
 # 📌 Platform Support
 - This Flutter package supports the following platforms:
 
-| Platform             | Support Status | Notes                                    |
-|:---------------------|:---------------|:-----------------------------------------|
-| Android              | ✅ Supported    | Requires Android Sdk **23** or **Newer** |
-| iOS                  | ✅ Supported    | Requires iOS **12.0** or **Newer**       |
-| Web                  | ⏳ Soon         | Will be supported soon.                  |
+
+| Platform             | Support Status | Notes                                    | 
+|:---------------------|:---------------|:-----------------------------------------| 
+| Android              | ✅ Supported    | Requires Android Sdk **23** or **Newer** | 
+| iOS                  | ✅ Supported    | Requires iOS **12.0** or **Newer**       | 
+| Web                  | ⏳ Soon         | Will be supported soon.                  | 
 
 
 ## 🚀 Features
@@ -279,6 +281,31 @@ You’ll see a command-line menu with the following options:
 > **Note**: Using these options helps ensure that sensitive or unnecessary logs are managed
 > efficiently in production-ready code.
 
+### 5. **DashShieldOverlay**
+
+The `DashShieldOverlay` widget is designed to enhance the security of Flutter applications by covering the screen with a customizable overlay when the app goes into the background. This helps prevent sensitive information from being visible when switching between apps or viewing recent apps.
+
+All you need to do, is to put it in the builder method in MaterialApp Widget, or Wrap any screen you want to implement this feature on it with this widget.
+
+```dart
+import 'package:dash_shield/dash_shield.dart';
+
+return MaterialApp(
+     ...
+      builder: (context, child) {
+        return DashShieldOverlay(
+            overlayWidget: Container(
+              color: Colors.teal,
+              child: const Center(
+                child: Text("Dash Shield"),
+              ),
+            ),
+            child: child!);
+      },
+      home: const MyHomePage(title: 'Dash Shield Demo'),
+    );
+```
+
 ## 🚀 API Reference
 
 ### Methods
@@ -314,18 +341,20 @@ certificates, and app security options.
 
 - **Properties**:
 
-|             Datatype              |         Parameter          | Required On Android | Required On IOS | Default Value | Description                                                                                    |
-|:---------------------------------:|:--------------------------:|:-------------------:|:---------------:|:-------------:|:-----------------------------------------------------------------------------------------------|
-|         List`<`String`>`          | androidSigningSHA256Hashes |          ✅          |        ❌        |      --       | List of SHA256 hashes for Android app signing.                                                 |
-|              String               |     androidPackageName     |          ✅          |        ❌        |      --       | Package name for the Android app.                                                              |
-|         List`<`String`>`          |        iosBundleIds        |          ❌          |        ✅        |      --       | List of iOS bundle IDs.                                                                        |
-|              String               |         iosTeamId          |          ❌          |        ✅        |      --       | Team ID for iOS app signing.                                                                   |
-|              String               |        watcherEmail        |          ✅          |        ✅        |      --       | Email for receiving alerts when integrity issues are detected.                                 |
-|               bool                |      enableOnAndroid       |          ✅          |        ✅        |      --       | Indicates if security checks should be enabled on Android.                                     |
-|               bool                |        enableOniOS         |          ✅          |        ✅        |      --       | Indicates if security checks should be enabled on IOS.                                         |
-|         List`<`String`>`          |      supportedStores       |    **Optional**     |  **Optional**   |      --       | Supported app stores.                                                                          |
-|               bool                |        isProduction        |    **Optional**     |  **Optional**   |     true      | Indicates if the app is in production mode.                                                    |
-|  List`<`SecOnControlsToApply`>`   |       checksToEnable       |    **Optional**     |  **Optional**   |      --       | List of security checks to enable . If `null`, all security checks will be enabled by default. |
+
+|             Datatype              |         Parameter          | Required On Android | Required On IOS | Default Value | Description                                                                                    | 
+|:---------------------------------:|:--------------------------:|:-------------------:|:---------------:|:-------------:|:-----------------------------------------------------------------------------------------------| 
+|         List`<`String`>`          | androidSigningSHA256Hashes |          ✅          |        ❌        |      --       | List of SHA256 hashes for Android app signing.                                                 | 
+|              String               |     androidPackageName     |          ✅          |        ❌        |      --       | Package name for the Android app.                                                              | 
+|         List`<`String`>`          |        iosBundleIds        |          ❌          |        ✅        |      --       | List of iOS bundle IDs.                                                                        | 
+|              String               |         iosTeamId          |          ❌          |        ✅        |      --       | Team ID for iOS app signing.                                                                   | 
+|              String               |        watcherEmail        |          ✅          |        ✅        |      --       | Email for receiving alerts when integrity issues are detected.                                 | 
+|               bool                |      enableOnAndroid       |          ✅          |        ✅        |      --       | Indicates if security checks should be enabled on Android.                                     | 
+|               bool                |        enableOniOS         |          ✅          |        ✅        |      --       | Indicates if security checks should be enabled on IOS.                                         | 
+|         List`<`String`>`          |      supportedStores       |    **Optional**     |  **Optional**   |      --       | Supported app stores.                                                                          | 
+|               bool                |        isProduction        |    **Optional**     |  **Optional**   |     true      | Indicates if the app is in production mode.                                                    | 
+|  List`<`SecOnControlsToApply`>`   |       checksToEnable       |    **Optional**     |  **Optional**   |      --       | List of security checks to enable . If `null`, all security checks will be enabled by default. | 
+
 
 ## 🚀 Troubleshooting
 
