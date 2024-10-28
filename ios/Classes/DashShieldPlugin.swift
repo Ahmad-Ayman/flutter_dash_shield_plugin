@@ -2,60 +2,42 @@ import Flutter
 import UIKit
 
 public class DashShieldPlugin: NSObject, FlutterPlugin {
+  private var channel: FlutterMethodChannel?
+
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "dash_shield", binaryMessenger: registrar.messenger())
     let instance = DashShieldPlugin()
+    instance.channel = channel
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 
-  private var globalScreenshotPrevention: Bool = false
-
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
     switch call.method {
-    case "preventScreenshots":
-      // Prevent screenshots for the specific screen if global prevention is not active
-      if let window = UIApplication.shared.keyWindow {
-        if !globalScreenshotPrevention {
-          window.isSecure = true
-        }
-        result(nil)
-      } else {
-        result(FlutterError(code: "UNAVAILABLE", message: "Window not available", details: nil))
-      }
-
-    case "allowScreenshots":
-      // Allow screenshots for the specific screen if global prevention is not active
-      if let window = UIApplication.shared.keyWindow {
-        if !globalScreenshotPrevention {
-          window.isSecure = false
-        }
-        result(nil)
-      } else {
-        result(FlutterError(code: "UNAVAILABLE", message: "Window not available", details: nil))
-      }
-
-    case "preventScreenshotsGlobally":
-      // Set global prevention of screenshots across the entire app
-      if let window = UIApplication.shared.keyWindow {
-        globalScreenshotPrevention = true
-        window.isSecure = true
-        result(nil)
-      } else {
-        result(FlutterError(code: "UNAVAILABLE", message: "Window not available", details: nil))
-      }
-
-    case "allowScreenshotsGlobally":
-      // Remove global prevention, allowing screenshots across the entire app
-      if let window = UIApplication.shared.keyWindow {
-        globalScreenshotPrevention = false
-        window.isSecure = false
-        result(nil)
-      } else {
-        result(FlutterError(code: "UNAVAILABLE", message: "Window not available", details: nil))
-      }
+    case "secureApp", "secureScreen":
+      // Start listening for screen capture notifications
+      NotificationCenter.default.addObserver(
+        self,
+        selector: #selector(screenCaptureChanged),
+        name: UIScreen.capturedDidChangeNotification,
+        object: nil
+      )
+      result(nil)
 
     default:
       result(FlutterMethodNotImplemented)
     }
+  }
+
+  /// Function triggered when screen capture status changes
+  @objc private func screenCaptureChanged() {
+    if UIScreen.main.isCaptured {
+      // Notify Flutter that screen capture was detected
+      channel?.invokeMethod("onScreenCaptureDetected", arguments: nil)
+    }
+  }
+
+  deinit {
+    // Clean up the notification observer when the plugin is deallocated
+    NotificationCenter.default.removeObserver(self, name: UIScreen.capturedDidChangeNotification, object: nil)
   }
 }

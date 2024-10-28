@@ -1,83 +1,84 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'dash_shield_platform_interface.dart';
 
-/// An implementation of [DashShieldPlatform] that uses method channels to
-/// communicate with native platform code for security features.
-///
-/// [MethodChannelDashShield] provides methods for preventing screenshots and
-/// screen recording, interacting with platform-specific implementations through
-/// method channels.
-///
-/// Example usage:
-/// ```dart
-/// MethodChannelDashShield().preventScreenshotsGlobally();
-/// MethodChannelDashShield().preventScreenshotsAndRecording();
-/// ```
 class MethodChannelDashShield extends DashShieldPlatform {
-  /// The method channel used to interact with the native platform.
-  @visibleForTesting
-  final methodChannel = const MethodChannel('dash_shield');
+  static const methodChannel = MethodChannel('dash_shield');
+  static OverlayEntry? _overlayEntry;
+  BuildContext? _context;
 
-  /// Prevents screenshots globally across the app using native platform methods.
-  ///
-  /// This method invokes the `preventScreenshotsGlobally` method on the native
-  /// platform to set security flags for the entire app, blocking screenshots
-  /// and screen recording. If an error occurs, a [PlatformException] is thrown
-  /// with a descriptive error message.
+  MethodChannelDashShield();
+
   @override
-  Future<void> preventScreenshotsGlobally() async {
-    try {
-      await methodChannel.invokeMethod('preventScreenshotsGlobally');
-    } on PlatformException catch (e) {
-      throw 'Failed to globally prevent screenshots: ${e.message}';
-    }
+  void initialize(BuildContext context) {
+    _context = context;
+    methodChannel.setMethodCallHandler((MethodCall call) async {
+      if (call.method == "onScreenCaptureDetected") {
+        if (_context != null) {
+          _showSecurityOverlay(_context!);
+        }
+      }
+    });
   }
 
-  /// Allows screenshots globally across the app using native platform methods.
-  ///
-  /// This method invokes the `allowScreenshotsGlobally` method on the native
-  /// platform to clear security flags across the entire app, enabling screenshots
-  /// and screen recording. If an error occurs, a [PlatformException] is thrown
-  /// with a descriptive error message.
-  @override
-  Future<void> allowScreenshotsGlobally() async {
-    try {
-      await methodChannel.invokeMethod('allowScreenshotsGlobally');
-    } on PlatformException catch (e) {
-      throw 'Failed to globally allow screenshots: ${e.message}';
-    }
+  static void _showSecurityOverlay(BuildContext context,
+      {Widget? customWidget}) {
+    if (_overlayEntry != null) return; // Prevent multiple overlays
+
+    _overlayEntry = OverlayEntry(
+      builder: (context) => ScreenCaptureOverlay(customWidget: customWidget),
+    );
+
+    Overlay.of(context)?.insert(_overlayEntry!);
   }
 
-  /// Prevents both screenshots and screen recording for specific screens using
-  /// native platform methods.
-  ///
-  /// This method invokes the `preventScreenshots` method on the native
-  /// platform. It is intended for restricting screenshots on specific
-  /// screens rather than the entire app. If an error occurs, a [PlatformException]
-  /// is thrown with a descriptive error message.
-  @override
-  Future<void> preventScreenshotsAndRecording() async {
-    try {
-      await methodChannel.invokeMethod('preventScreenshots');
-    } on PlatformException catch (e) {
-      throw 'Failed to prevent screenshots: ${e.message}';
-    }
+  static void removeSecurityOverlay() {
+    _overlayEntry?.remove();
+    _overlayEntry = null;
   }
 
-  /// Allows screenshots for the current screen only using native platform methods.
-  ///
-  /// This method invokes the `allowScreenshots` method on the native platform,
-  /// clearing security flags for the current screen. This enables screenshots
-  /// and screen recording specifically on this screen, if previously restricted.
-  /// If an error occurs, a [PlatformException] is thrown with a descriptive error message.
   @override
-  Future<void> allowScreenshots() async {
-    try {
-      await methodChannel.invokeMethod('allowScreenshots');
-    } on PlatformException catch (e) {
-      throw 'Failed to allow screenshots on this screen: ${e.message}';
-    }
+  Future<void> secureApp({Widget? customWidget}) async {
+    await methodChannel.invokeMethod('secureApp', {
+      'customWidget': customWidget != null,
+    });
+  }
+
+  @override
+  Future<void> secureScreen(String screenName, {Widget? customWidget}) async {
+    await methodChannel.invokeMethod('secureScreen', {
+      'screenName': screenName,
+      'customWidget': customWidget != null,
+    });
+  }
+}
+
+/// Overlay widget displayed during screen capture attempts
+class ScreenCaptureOverlay extends StatelessWidget {
+  final Widget? customWidget;
+
+  ScreenCaptureOverlay({this.customWidget});
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.black.withOpacity(0.8),
+      child: Center(
+        child: customWidget ?? DefaultSecurityWidget(),
+      ),
+    );
+  }
+}
+
+/// Default widget shown if no custom widget is provided
+class DefaultSecurityWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      "Screen capture restricted",
+      style: TextStyle(color: Colors.white, fontSize: 24),
+      textAlign: TextAlign.center,
+    );
   }
 }
