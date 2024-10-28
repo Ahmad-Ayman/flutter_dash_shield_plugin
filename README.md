@@ -96,6 +96,8 @@ import 'package:dash_shield/dash_shield.dart';
 await DashShield.allowScreenshotsGlobally();
 ```
 
+> **Note**: The previous 2 Methods works well with Android and IOS.
+
 #### b) For Specific Screens
 
 If you need to prevent screenshots and recording only on certain screens, Dash Shield provides a
@@ -115,20 +117,20 @@ class _Step2State extends State<Step2> {
   void initState() {
     super.initState();
     /// Prevent Screenshot for this screen.
-    DashShield.preventScreenshotsAndRecording();
+    DashShield.preventScreenshotsAndRecordingForThisScreen();
   }
 
   @override
   void dispose() {
     /// Allow screenshots when leaving this screen
-    DashShield.allowScreenshots(); 
+    DashShield.allowScreenshotsAndRecordingForThisScreen(); 
     super.dispose();
   }
 
   @override
   void deactivate() {
     /// Allow screenshots when leaving this screen
-    DashShield.allowScreenshots(); 
+    DashShield.allowScreenshotsAndRecordingForThisScreen(); 
     super.deactivate();
   }
 
@@ -147,13 +149,17 @@ class _Step2State extends State<Step2> {
 
 ```
 
-In this example, calling DashShield.preventScreenshotsAndRecording() inside the build method of a
-specific screen will restrict screenshots and recordings only for that screen. This targeted
-restriction allows you to control the security of individual screens without affecting the rest of
-the app.
+In this example, calling DashShield.preventScreenshotsAndRecordingForThisScreen() inside the build method of a
+specific screen (if Stateless) and inside initState() method (if Stateful), this will restrict screenshots and recordings only for that screen. 
+This targeted restriction allows you to control the security of individual screens without affecting the rest of
+the app. and don't forget to call DashShield.allowScreenshotsAndRecordingForThisScreen(); when leaving the screen to allow 
+Screenshots in other screens.
 
-> **Tip**: Place the `preventScreenshotsAndRecording()` call at the top of the `build` method for
-> clarity, ensuring it activates as soon as the screen is rendered.
+> **Tip**: Place the `preventScreenshotsAndRecordingForThisScreen()` call at the top of the `build` (if Stateless) and inside `initState()` method (if Stateful)
+>  for clarity, ensuring it activates as soon as the screen is rendered.
+
+> **Note**: The previous 2 Methods works well with Android Only.
+
 
 ### 2. **Apply SSL Pinning**
 
@@ -279,19 +285,19 @@ You’ll see a command-line menu with the following options:
 
 #### `preventScreenshotsGlobally()`
 
-Prevents screenshots and screen recordings globally across the app.
+Prevents screenshots and screen recordings globally across the app. (Working in Android and IOS)
 
 #### `allowScreenshotsGlobally()`
 
-Allow screenshots and screen recordings globally across the app.
+Allow screenshots and screen recordings globally across the app. (Working in Android and IOS)
 
-#### `preventScreenshotsAndRecording()`
+#### `preventScreenshotsAndRecordingForThisScreen()`
 
-Prevents screenshots and screen recordings for specific screens.
+Prevents screenshots and screen recordings for specific screens. (Working in Android Only for now)
 
-#### `allowScreenshots()`
+#### `allowScreenshotsAndRecordingForThisScreen()`
 
-Allow screenshots and screen recordings for specific screens.
+Allow screenshots and screen recordings for specific screens. (Working in Android Only for now)
 
 #### `applySSLPinning(List<String> certificatePaths, dynamic client)`
 

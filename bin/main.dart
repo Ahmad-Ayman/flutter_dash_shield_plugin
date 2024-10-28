@@ -3,9 +3,9 @@ import 'package:interact/interact.dart';
 
 /// The main entry point for the Dash Shield console application.
 ///
-/// This script provides a console interface for managing `print` statements
+/// This script provides a console interface for managing print statements
 /// within a Flutter project. Currently, it allows users to either remove
-/// all `print` statements or wrap them with `kDebugMode` to ensure they
+/// all print statements or wrap them with kDebugMode to ensure they
 /// only run in debug mode. More options will be added in future updates.
 void main() async {
   showMainMenu();
@@ -13,7 +13,7 @@ void main() async {
 
 /// Displays the main menu for Dash Shield console options.
 ///
-/// This function presents a prompt with options related to `print` management
+/// This function presents a prompt with options related to print management
 /// in the project. Future updates will add more options to the menu.
 Future<void> showMainMenu() async {
   final options = ['Prints Removal & Replace'];
@@ -27,10 +27,10 @@ Future<void> showMainMenu() async {
   }
 }
 
-/// Displays the `print` management submenu with available actions.
+/// Displays the print management submenu with available actions.
 ///
-/// This function allows the user to choose between removing all `print`
-/// statements or wrapping them with `kDebugMode`. Each action is accompanied
+/// This function allows the user to choose between removing all print
+/// statements or wrapping them with kDebugMode. Each action is accompanied
 /// by a progress indicator to inform the user of task completion.
 Future<void> showPrintsMenu() async {
   final options = ['Remove All Prints', 'Wrap All Prints with kDebugMode'];
@@ -40,7 +40,7 @@ Future<void> showPrintsMenu() async {
   ).interact();
 
   if (selectedAction == 0) {
-    // Show a spinner while removing all `print` statements
+    // Show a spinner while removing all print statements
     final gift = Spinner(
       icon: '🏆',
       leftPrompt: (done) => '', // optional left prompt
@@ -53,7 +53,7 @@ Future<void> showPrintsMenu() async {
     await Future.delayed(const Duration(seconds: 3));
     gift.done();
   } else if (selectedAction == 1) {
-    // Show a spinner while wrapping `print` statements with `kDebugMode`
+    // Show a spinner while wrapping print statements with kDebugMode
     final gift = Spinner(
       icon: '🏆',
       leftPrompt: (done) => '', // optional left prompt

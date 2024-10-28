@@ -1,35 +1,38 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class SecurityOverlay extends StatefulWidget {
+class DashShieldOverlay extends StatefulWidget {
   final Widget child;
-  final String overlayText;
-  final Color overlayColor;
+  final Widget overlayWidget;
 
-  const SecurityOverlay({
-    Key? key,
+  const DashShieldOverlay({
+    super.key,
     required this.child,
-    this.overlayText = 'App in Background',
-    this.overlayColor = Colors.white,
-  }) : super(key: key);
+    required this.overlayWidget,
+  });
 
   @override
   _SecurityOverlayState createState() => _SecurityOverlayState();
 }
 
-class _SecurityOverlayState extends State<SecurityOverlay>
+class _SecurityOverlayState extends State<DashShieldOverlay>
     with WidgetsBindingObserver {
   bool _isInBackground = false;
 
   @override
   void initState() {
     super.initState();
-    print('initState');
+    if (kDebugMode) {
+      print('initState');
+    }
     WidgetsBinding.instance.addObserver(this);
   }
 
   @override
   void dispose() {
-    print('disposed');
+    if (kDebugMode) {
+      print('disposed');
+    }
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
@@ -37,7 +40,9 @@ class _SecurityOverlayState extends State<SecurityOverlay>
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     setState(() {
-      print('didChangeAppLifecycleState -- ${state.name}');
+      if (kDebugMode) {
+        print('didChangeAppLifecycleState -- ${state.name.toString()}');
+      }
       _isInBackground = (state == AppLifecycleState.paused) ||
           (state == AppLifecycleState.inactive);
     });
@@ -45,22 +50,13 @@ class _SecurityOverlayState extends State<SecurityOverlay>
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        widget.child,
-        if (_isInBackground)
-          Positioned.fill(
-            child: Container(
-              color: widget.overlayColor,
-              child: Center(
-                child: Text(
-                  widget.overlayText,
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-          ),
-      ],
+    return Scaffold(
+      body: Stack(
+        children: [
+          widget.child,
+          if (_isInBackground) Positioned.fill(child: widget.overlayWidget),
+        ],
+      ),
     );
   }
 }

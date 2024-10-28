@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:dash_shield/src/features/integrity_checks/integrity_checks_service.dart';
 import 'package:dash_shield/src/features/integrity_checks/security_config.dart';
-import 'package:flutter/material.dart';
+import 'package:screen_protector/screen_protector.dart';
 
 import 'dash_shield_platform_interface.dart';
+import 'src/core/exceptions/configuration_exception.dart';
 import 'src/features/ssl_pinning/ssl_security_service.dart';
 
 export 'src/core/utils/enums.dart';
@@ -24,55 +27,60 @@ export 'src/features/security_screen_overlay/security_screen_overlay.dart';
 /// DashShield.initSecurity(config: securityConfig);
 /// ```
 class DashShield {
-  /// Initializes the plugin with the given BuildContext.
-  static void initialize(BuildContext context) {
-    DashShieldPlatform.instance.initialize(context);
+  /// Prevents screenshots globally across the app.
+  ///
+  /// This method uses platform-specific implementations to block screenshots
+  /// across the entire app, ensuring sensitive data cannot be captured via
+  /// screenshots on both Android and iOS devices. Not supported on other platforms.
+  static Future<void> preventScreenshotsGlobally() async {
+    if (Platform.isAndroid) {
+      return DashShieldPlatform.instance.preventScreenshotsGlobally();
+    } else if (Platform.isIOS) {
+      return await ScreenProtector.preventScreenshotOn();
+    } else {
+      throw ConfigurationException('Platform Not Supported');
+    }
   }
 
-  static Future<void> secureApp({Widget? customWidget}) async {
-    await DashShieldPlatform.instance.secureApp(customWidget: customWidget);
+  /// Allows screenshots globally across the app.
+  ///
+  /// This method reverses the screenshot prevention setting across all screens,
+  /// allowing screenshots and screen recording throughout the app on Android
+  /// and iOS devices. Not supported on other platforms.
+  static Future<void> allowScreenshotsGlobally() async {
+    if (Platform.isAndroid) {
+      return DashShieldPlatform.instance.allowScreenshotsGlobally();
+    } else if (Platform.isIOS) {
+      return await ScreenProtector.preventScreenshotOff();
+    } else {
+      throw ConfigurationException('Platform Not Supported');
+    }
   }
 
-  static Future<void> secureScreen(String screenName,
-      {Widget? customWidget}) async {
-    await DashShieldPlatform.instance
-        .secureScreen(screenName, customWidget: customWidget);
+  /// Prevents both screenshots and screen recording for the current screen.
+  ///
+  /// This method uses platform-specific implementations to block both screenshots
+  /// and screen recording, ensuring sensitive data on this screen cannot be captured.
+  /// This method is currently only supported on Android.
+  static Future<void> preventScreenshotsAndRecordingForThisScreen() {
+    if (Platform.isAndroid) {
+      return DashShieldPlatform.instance.preventScreenshotsAndRecording();
+    } else {
+      throw ConfigurationException('Platform Not Supported');
+    }
   }
-  // /// Prevents screenshots globally across the app.
-  // ///
-  // /// This method uses platform-specific implementations to block screenshots.
-  // static Future<void> preventScreenshotsGlobally() {
-  //   return DashShieldPlatform.instance.preventScreenshotsGlobally();
-  // }
-  //
-  // /// Allows screenshots globally across the app.
-  // ///
-  // /// This method removes the screenshot prevention flag across all screens,
-  // /// enabling screenshots and screen recording throughout the app.
-  // static Future<void> allowScreenshotsGlobally() {
-  //   return DashShieldPlatform.instance.allowScreenshotsGlobally();
-  // }
-  //
-  // /// Prevents both screenshots and screen recording across the app.
-  // ///
-  // /// This method uses platform-specific implementations to block both
-  // /// screenshots and screen recording, ensuring sensitive data cannot
-  // /// be captured.
-  // static Future<void> preventScreenshotsAndRecording() {
-  //   return DashShieldPlatform.instance.preventScreenshotsAndRecording();
-  // }
-  //
-  // /// Allows screenshots for the current screen only.
-  // ///
-  // /// This method removes the screenshot prevention flag for the current screen,
-  // /// enabling screenshots and screen recording for this screen.
-  // static Future<void> allowScreenshots() {
-  //   return DashShieldPlatform.instance.allowScreenshots();
-  // }
 
-  // A widget to overlay on a screen when screenshot/screen recording is detected
-  static Widget securityOverlay({Widget? customWidget}) {
-    return customWidget ?? DefaultSecurityWidget();
+  /// Allows screenshots and screen recording for the current screen only.
+  ///
+  /// This method reverses the screenshot prevention setting for the current screen,
+  /// enabling screenshots and screen recording for this screen on supported platforms.
+  /// This method is currently only supported on Android.
+  static Future<void> allowScreenshotsAndRecordingForThisScreen() {
+    if (Platform.isAndroid) {
+      return DashShieldPlatform.instance.allowScreenshots();
+    } else {
+      throw ConfigurationException('Platform Not Supported');
+    }
   }
 
   /// Applies SSL pinning using the provided [certificateAssetPath] for secure
@@ -101,12 +109,5 @@ class DashShield {
   /// ```
   static Future<void> initSecurity({required SecurityConfig config}) async {
     await IntegrityChecksService.startIntegrityChecks(config: config);
-  }
-}
-
-class DefaultSecurityWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(child: Text("Screen Capture Restricted"));
   }
 }
