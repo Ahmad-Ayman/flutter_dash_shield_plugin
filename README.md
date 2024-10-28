@@ -340,6 +340,10 @@ If you encounter any issues, please ensure:
 This plugin relies on several other plugins to provide robust security features:
 
 - **[freeRASP](https://pub.dev/packages/freerasp)**: Used for runtime application self-protection (RASP) and integrity checks.
+- **[screen_protector](https://pub.dev/packages/screen_protector)**: Used for screen prevention in IOS.
+- **[fluttertoast](https://pub.dev/packages/fluttertoast)**: Used for showing Toasts without context.
+- **[dio](https://pub.dev/packages/dio)**: Used for Handling SSL Pinning for it's client.
+- **[dio_http_formatter](https://pub.dev/packages/dio_http_formatter)**: Used for beautifying Dio responses.
 
 These dependencies are necessary to ensure the plugin provides optimal security functionality.
 
