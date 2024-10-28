@@ -5,13 +5,16 @@
 Pod::Spec.new do |s|
   s.name             = 'dash_shield'
   s.version          = '0.0.1'
-  s.summary          = 'A new Flutter project.'
+  s.summary          = 'Dash Shield is a comprehensive Flutter plugin designed to enhance app security by preventing
+                          screenshots, enforcing SSL pinning, and performing app integrity checks. It also provides tools
+                          for managing `print` statements, helping streamline development workflows and protect sensitive
+                          data in production environments.'
   s.description      = <<-DESC
 A new Flutter project.
                        DESC
-  s.homepage         = 'http://example.com'
+  s.homepage         = 'https://ahmed-ayman.framer.ai/'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Your Company' => 'email@example.com' }
+  s.author           = { 'TD' => 'ahmed.ayman1708@gmail.com' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
