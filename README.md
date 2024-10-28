@@ -2,7 +2,7 @@
 
 ![Dash Shield](https://img.shields.io/badge/security-robust-brightgreen.svg) ![Flutter](https://img.shields.io/badge/flutter-v3.24.3-blue.svg)
 
-![Dash Shield Logo](media/dash_shield.png)
+![Dash Shield Logo](https://raw.githubusercontent.com/Ahmad-Ayman/flutter_dash_shield_plugin/refs/heads/main/media/dash_shield.png)
 
 
 
@@ -276,7 +276,7 @@ You’ll see a command-line menu with the following options:
   with `kDebugMode`, making them visible only in debug mode. This is a quick way to retain useful
   debug information without exposing it in production.
 
-![example](https://github.com/Ahmad-Ayman/flutter_dash_shield_plugin/blob/main/media/dash_plugin_prints.gif)
+![example](https://raw.githubusercontent.com/Ahmad-Ayman/flutter_dash_shield_plugin/refs/heads/main/media/dash_plugin_prints.gif)
 
 > **Note**: Using these options helps ensure that sensitive or unnecessary logs are managed
 > efficiently in production-ready code.
