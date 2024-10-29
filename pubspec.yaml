@@ -1,10 +1,7 @@
 name: dash_shield
 description: >
-  Dash Shield is a comprehensive Flutter plugin designed to enhance app security by preventing
-  screenshots, enforcing SSL pinning, and performing app integrity checks. It also provides tools
-  for managing `print` statements, helping streamline development workflows and protect sensitive
-  data in production environments.
-version: 0.0.1+1
+  Dash Shield: A robust Flutter plugin for app security, featuring screenshot prevention, SSL pinning, app integrity checks, and print management for safe production.
+version: 0.0.1+2
 homepage: https://ahmed-ayman.framer.ai/
 repository: https://github.com/Ahmad-Ayman/flutter_dash_shield_plugin
 
@@ -58,15 +55,15 @@ flutter:
         pluginClass: DashShieldPlugin
       ios:
         pluginClass: DashShieldPlugin
-      linux:
-        pluginClass: DashShieldPlugin
-      macos:
-        pluginClass: DashShieldPlugin
-      windows:
-        pluginClass: DashShieldPluginCApi
-      web:
-        pluginClass: DashShieldWeb
-        fileName: dash_shield_web.dart
+#      linux:
+#        pluginClass: DashShieldPlugin
+#      macos:
+#        pluginClass: DashShieldPlugin
+#      windows:
+#        pluginClass: DashShieldPluginCApi
+#      web:
+#        pluginClass: DashShieldWeb
+#        fileName: dash_shield_web.dart
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

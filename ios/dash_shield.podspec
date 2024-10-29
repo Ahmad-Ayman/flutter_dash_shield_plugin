@@ -5,10 +5,7 @@
 Pod::Spec.new do |s|
   s.name             = 'dash_shield'
   s.version          = '0.0.1'
-  s.summary          = 'Dash Shield is a comprehensive Flutter plugin designed to enhance app security by preventing
-                          screenshots, enforcing SSL pinning, and performing app integrity checks. It also provides tools
-                          for managing `print` statements, helping streamline development workflows and protect sensitive
-                          data in production environments.'
+  s.summary          = 'Dash Shield: A robust Flutter plugin for app security, featuring screenshot prevention, SSL pinning, app integrity checks, and print management for safe production.'
   s.description      = <<-DESC
 A new Flutter project.
                        DESC
