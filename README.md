@@ -64,7 +64,7 @@ Add `dash_shield` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  dash_shield: ^0.0.1+3
+  dash_shield: ^0.0.1+4
 ```
 
 Then, run:
