@@ -64,7 +64,7 @@ Add `dash_shield` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  dash_shield: ^0.0.1
+  dash_shield: ^0.0.1+3
 ```
 
 Then, run:
@@ -202,7 +202,7 @@ To set up integrity checks, create a `SecurityConfig` instance with the necessar
 import 'package:dash_shield/dash_shield.dart';
 
 final securityConfig = SecurityConfig(
-  androidSigningCertHashes: ['sha256hash1', 'sha256hash2'],
+  androidSigningSHA256Hashes: ['sha256hash1', 'sha256hash2'],
   androidPackageName: 'com.example.app',
   iosBundleIds: ['com.example.app.ios'],
   iosTeamId: 'TEAMID',
@@ -212,7 +212,7 @@ final securityConfig = SecurityConfig(
 );
 ```
 
-- **androidSigningCertHashes**: List of SHA256 hashes for Android app signing.
+- **androidSigningSHA256Hashes**: List of SHA256 hashes for Android app signing.
 - **androidPackageName**: Package name for the Android app.
 - **iosBundleIds**: List of iOS bundle IDs.
 - **iosTeamId**: Team ID for iOS app signing.

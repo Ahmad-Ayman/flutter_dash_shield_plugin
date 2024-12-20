@@ -31,5 +31,6 @@ enum SecOnControlsToApply {
   simulator,
   systemVPN,
   devMode,
+  onADBEnabled,
   unofficialStore,
 }

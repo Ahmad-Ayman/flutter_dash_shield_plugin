@@ -53,6 +53,7 @@ class IntegrityChecksService {
             : null,
         watcherMail: config.watcherEmail,
         isProd: config.isProduction,
+
       );
 
       // Set up threat detection callbacks
@@ -102,6 +103,9 @@ class IntegrityChecksService {
           SecOnControlsToApply.devMode, 'Developer mode'),
       onUnofficialStore: () => _handleCheck(config, enabledChecks,
           SecOnControlsToApply.unofficialStore, 'Unofficial store'),
+      onADBEnabled: ()=> _handleCheck(config, enabledChecks,
+          SecOnControlsToApply.onADBEnabled, 'USB debugging enabled'),
+
     );
   }
 
