@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
-import 'package:dio_http_formatter/dio_http_formatter.dart';
+// import 'package:dio_http_formatter/dio_http_formatter.dart';
 import 'package:flutter/services.dart';
 
 import '../../core/exceptions/configuration_exception.dart';
@@ -61,7 +61,7 @@ class SSLSecurityService {
   /// certificate verification and attaches it to the Dio client.
   static void _handleSSLPinningWithDio(Dio client, SecurityContext secContext) {
     // Add HTTP formatter for logging requests and responses
-    client.interceptors.add(HttpFormatter());
+    // client.interceptors.add(HttpFormatter());
 
     // Create a customized HttpClient with the provided security context
     HttpClient httpClient = HttpClient(context: secContext);
@@ -69,6 +69,7 @@ class SSLSecurityService {
     // Reject all certificates not in the trusted list
     httpClient.badCertificateCallback =
         (X509Certificate cert, String host, int port) {
+
       return false;
     };
 

@@ -1,38 +1,40 @@
 name: dash_shield
 description: >
   Dash Shield: A robust Flutter plugin for app security, featuring screenshot prevention, SSL pinning, app integrity checks, and print management for safe production.
-version: 0.0.1+4
+version: 0.0.1+5
 homepage: https://ahmed-ayman.framer.ai/
 repository: https://github.com/Ahmad-Ayman/flutter_dash_shield_plugin
 
 environment:
   sdk: ">=2.18.0 <4.0.0" # Minimum Dart SDK version required by your plugin
-  flutter: ">=3.3.0"    # Minimum Flutter SDK version required by your plugin
+  flutter: ">=3.0.0"    # Minimum Flutter SDK version required by your plugin
 
 dependencies:
   flutter:
     sdk: flutter
   flutter_web_plugins:
     sdk: flutter
-  web: ^1.1.0
-  plugin_platform_interface: ^2.0.2
-  dartdoc: ^8.1.0
-  dio: ^5.7.0
-  freerasp: ^6.10.0
-  fluttertoast: ^8.2.8
-  dio_http_formatter: ^3.2.1
+#  web:
+  plugin_platform_interface:
+  dartdoc:
+  dio:
+  freerasp: ^7.2.1
+  fluttertoast:
+#  dio_http_formatter:
   interact:
     path: packags/interact
-  screen_protector: ^1.4.2+1
-  dart_console: ^4.1.1
+  screen_protector:
+  dart_console:
 
 
+dependency_overrides:
+  meta:
 
 dev_dependencies:
 
   flutter_test:
     sdk: flutter
-  flutter_lints: ^4.0.0
+  flutter_lints:
 
 
 # For information on the generic Dart part of this file, see the
